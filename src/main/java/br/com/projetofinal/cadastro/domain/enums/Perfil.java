@@ -2,7 +2,7 @@ package br.com.projetofinal.cadastro.domain.enums;
 
 public enum Perfil {
 
-	ADMIN(0, "ADMINISTRADOR"), FUNCIONARIO(1, "FUNCIONARIO");
+	ADMIN(0, "ADMINISTRADOR"), CLIENTE(1, "CLIENTE"), FUNCIONARIO(2, "FUNCIONARIO");
 
 	// ATRIBUTOS
 	private Integer codigo;
@@ -18,16 +18,11 @@ public enum Perfil {
 	public Integer getCodigo() {
 		return codigo;
 	}
-	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
-	}
+	
 	public String getDescrição() {
 		return descrição;
 	}
-	public void setDescrição(String descrição) {
-		this.descrição = descrição;
-	}
-	
+		
 	//METODOS
 	public static Perfil toEnum(Integer cod) {
 		if(cod == null) {
