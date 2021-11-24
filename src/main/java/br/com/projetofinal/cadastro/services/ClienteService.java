@@ -60,7 +60,7 @@ public class ClienteService {
 	public void delete(Integer id) {
 		Cliente obj = findById(id);
 
-		if (obj.getPedidos().size() >= 1) {
+		if (obj.getPedidos().size() > 1) {
 			throw new DataIntegrityViolationException("Cliente possui um pedido aberto e não pode ser deletado!");
 		} else {		
 		repository.deleteById(id);

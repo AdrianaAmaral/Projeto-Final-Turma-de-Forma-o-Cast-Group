@@ -60,7 +60,7 @@ public class FuncionarioService {
 	public void delete(Integer id) {
 		Funcionario obj = findById(id);
 
-		if (obj.getPedidos().size() >= 1) {
+		if (obj.getPedidos().size() > 1) {
 			throw new DataIntegrityViolationException("Funcionario possui um pedido aberto e não pode ser deletado!");
 		} else {		
 		repository.deleteById(id);
