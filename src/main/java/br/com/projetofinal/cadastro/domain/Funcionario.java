@@ -25,12 +25,12 @@ public class Funcionario extends Pessoa {
 	//CONSTRUTOR SUPER CLASSE
 	public Funcionario() {
 		super();
-		addPerfil(Perfil.CLIENTE);
+		addPerfil(Perfil.FUNCIONARIO);
 	}
 
 	public Funcionario(Integer id, String nome, String cpf, String email, String senha) {
 		super(id, nome, cpf, email, senha);
-		addPerfil(Perfil.CLIENTE);
+		addPerfil(Perfil.FUNCIONARIO);
 	}
 
 	public Funcionario(FuncionarioDTO obj) {
@@ -42,7 +42,6 @@ public class Funcionario extends Pessoa {
 		this.senha = obj.getSenha();
 		this.perfis = obj.getPerfis().stream().map(x -> x.getCodigo()).collect(Collectors.toSet());
 		this.dataCriacao = obj.getDataCriacao();
-		addPerfil(Perfil.CLIENTE);
 	}
 	//MÉTODOS GET E SET
 	public List<Pedido> getPedidos() {

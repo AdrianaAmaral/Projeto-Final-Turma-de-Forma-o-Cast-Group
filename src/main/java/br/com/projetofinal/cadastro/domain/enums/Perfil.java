@@ -2,7 +2,7 @@ package br.com.projetofinal.cadastro.domain.enums;
 
 public enum Perfil {
 
-	ADMIN(0, "ADMINISTRADOR"), CLIENTE(1, "CLIENTE"), FUNCIONARIO(2, "FUNCIONARIO");
+	ADMIN(0, "ADMIN"), CLIENTE(1, "CLIENTE"), FUNCIONARIO(2, "FUNCIONARIO");
 
 	// ATRIBUTOS
 	private Integer codigo;

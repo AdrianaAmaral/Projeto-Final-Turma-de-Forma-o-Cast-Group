@@ -45,7 +45,7 @@ import br.com.projetofinal.cadastro.domain.enums.Status;
 
 		}
 
-		public Pedido(Integer id, String titulo, String observacoes, Funcionario funcionario,
+		public Pedido(Integer id, Status status, String titulo, String observacoes, Funcionario funcionario,
 				Cliente cliente) {
 			super();
 			this.id = id;

@@ -23,7 +23,7 @@ import br.com.projetofinal.cadastro.services.PedidoService;
 
 @RestController
 @RequestMapping(value = "/pedidos")
-public class PedidoResources {
+public class PedidoResource {
 
 	@Autowired
 	private PedidoService service;

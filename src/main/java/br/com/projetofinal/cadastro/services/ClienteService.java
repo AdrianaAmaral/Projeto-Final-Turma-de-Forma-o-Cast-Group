@@ -41,7 +41,7 @@ public class ClienteService {
 		objDTO.setId(null);
 		objDTO.setSenha(encoder.encode(objDTO.getSenha()));
 		validaPorCpfEEmail(objDTO);
-		Cliente newObj = new Cliente();
+		Cliente newObj = new Cliente(objDTO);
 		return repository.save(newObj);
 	}
 	
@@ -53,7 +53,7 @@ public class ClienteService {
 			objDTO.setSenha(encoder.encode(objDTO.getSenha()));
 		
 		validaPorCpfEEmail(objDTO);
-		oldObj = new Cliente();
+		oldObj = new Cliente(objDTO);
 		return repository.save(oldObj);
 	}
 	

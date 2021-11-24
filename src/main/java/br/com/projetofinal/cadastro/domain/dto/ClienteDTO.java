@@ -13,7 +13,6 @@ import org.hibernate.validator.constraints.br.CPF;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import br.com.projetofinal.cadastro.domain.Cliente;
-import br.com.projetofinal.cadastro.domain.Funcionario;
 import br.com.projetofinal.cadastro.domain.enums.Perfil;
 
 public class ClienteDTO implements Serializable {
