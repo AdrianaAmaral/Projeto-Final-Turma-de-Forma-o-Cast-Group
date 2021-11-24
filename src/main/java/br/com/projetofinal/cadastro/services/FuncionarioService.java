@@ -50,7 +50,7 @@ public class FuncionarioService {
 		Funcionario oldObj = findById(id);
 		
 		if(!objDTO.getSenha().equals(oldObj.getSenha()))
-			objDTO.setSenha(encoder.encode(objDTO.getSenha()));;
+			objDTO.setSenha(encoder.encode(objDTO.getSenha()));
 	
 		validaPorCpfEEmail(objDTO);
 		oldObj = new Funcionario(objDTO);
@@ -60,7 +60,7 @@ public class FuncionarioService {
 	public void delete(Integer id) {
 		Funcionario obj = findById(id);
 
-		if (obj.getPedidos().size() > 0) {
+		if (obj.getPedidos().size() >= 1) {
 			throw new DataIntegrityViolationException("Funcionario possui um pedido aberto e não pode ser deletado!");
 		} else {		
 		repository.deleteById(id);
