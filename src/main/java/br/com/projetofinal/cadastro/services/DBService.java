@@ -42,14 +42,10 @@ public class DBService {
 		Cliente cli4 = new Cliente(null, "Marcia Campos", "89681465008", "marciacampos@gmail.com", encoder.encode("123"));
 		Cliente cli5 = new Cliente(null, "Maria das Dores", "36404273004", "mariadasdores@gmail.com", encoder.encode("123"));
 		
-		Pedido p1 = new Pedido(null, Status.ANDAMENTO, "Primeiro Pedido", "Arrumar calha", func1, cli1);
-		Pedido p2 = new Pedido(null, Status.ABERTO, "Segundo Pedido", "Consertar chuveiro", func1, cli2);
-		Pedido p3 = new Pedido(null, Status.ENCERRADO, "Terceiro Pedido", "Trocar fechadura", func3, cli3);
-		Pedido p4 = new Pedido(null, Status.ANDAMENTO, "Quarto Pedido", "Arrumar porta", func3, cli4);
-		Pedido p5 = new Pedido(null, Status.ENCERRADO, "Quinto Pedido", "Consertar pia", func2, cli5);
+		
 		
 		pessoaRepository.saveAll(Arrays.asList(func1, func2, func3, cli1, cli2, cli3, cli4, cli5));
-		pedidoRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
+		
 	
 	}
 }
