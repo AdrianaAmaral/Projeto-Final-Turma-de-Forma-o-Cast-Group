@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import br.com.projetofinal.cadastro.domain.Funcionario;
 import br.com.projetofinal.cadastro.domain.Pessoa;
 import br.com.projetofinal.cadastro.domain.dto.FuncionarioDTO;
+import br.com.projetofinal.cadastro.domain.enums.Status;
 import br.com.projetofinal.cadastro.repositorios.FuncionarioRepository;
 import br.com.projetofinal.cadastro.repositorios.PessoaRepository;
 import br.com.projetofinal.cadastro.services.excecao.ObjectnotFoundException;
@@ -62,9 +63,9 @@ public class FuncionarioService {
 
 		if (obj.getPedidos().size() > 1) {
 			throw new DataIntegrityViolationException("Funcionario possui um pedido aberto e não pode ser deletado!");
-		} else {		
+		} if (obj.getPedidos().equals(Status.ENCERRADO)) {		
 		repository.deleteById(id);
-	}
+			}
 	}
 	
 	private void validaPorCpfEEmail(FuncionarioDTO objDTO) {

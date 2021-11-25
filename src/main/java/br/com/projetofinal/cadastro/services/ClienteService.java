@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import br.com.projetofinal.cadastro.domain.Cliente;
 import br.com.projetofinal.cadastro.domain.Pessoa;
 import br.com.projetofinal.cadastro.domain.dto.ClienteDTO;
+import br.com.projetofinal.cadastro.domain.enums.Status;
 import br.com.projetofinal.cadastro.repositorios.ClienteRepository;
 import br.com.projetofinal.cadastro.repositorios.PessoaRepository;
 import br.com.projetofinal.cadastro.services.excecao.ObjectnotFoundException;
@@ -60,13 +61,14 @@ public class ClienteService {
 	public void delete(Integer id) {
 		Cliente obj = findById(id);
 
-		if (obj.getPedidos().size() > 1) {
-			throw new DataIntegrityViolationException("Cliente possui um pedido aberto e não pode ser deletado!");
-		} else {		
+		if (obj.getPedidos().size() > 0) {
+			throw new DataIntegrityViolationException("Cliente possui pedido aberto e não pode ser deletado!");
+		}
+		if (obj.getPedidos().equals(Status.ENCERRADO)) {
 		repository.deleteById(id);
 	}
 	}
-	
+		
 	private void validaPorCpfEEmail(ClienteDTO objDTO) {
 		Optional<Pessoa> obj = pessoaRepository.findByCpf(objDTO.getCpf());
 		if(obj.isPresent() && obj.get().getId() != objDTO.getId()) {
