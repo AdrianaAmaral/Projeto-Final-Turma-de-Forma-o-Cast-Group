@@ -61,11 +61,11 @@ public class FuncionarioService {
 	public void delete(Integer id) {
 		Funcionario obj = findById(id);
 
-		if (obj.getPedidos().equals(Status.ENCERRADO)) {
-			repository.deleteById(id);	
-		} else {
-			throw new DataIntegrityViolationException("Cliente possui pedido aberto e não pode ser deletado!");
-		}
+		if (obj.getPedidos().size() > 0) {
+			throw new DataIntegrityViolationException("Funcionario possui um pedido aberto e não pode ser deletado!");
+		} if (obj.getPedidos().equals(Status.ENCERRADO)) {		
+		repository.deleteById(id);
+			}
 	}
 	
 	private void validaPorCpfEEmail(FuncionarioDTO objDTO) {
