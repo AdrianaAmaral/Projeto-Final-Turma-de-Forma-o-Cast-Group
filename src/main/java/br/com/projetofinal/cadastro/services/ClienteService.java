@@ -61,12 +61,11 @@ public class ClienteService {
 	public void delete(Integer id) {
 		Cliente obj = findById(id);
 
-		if (obj.getPedidos().size() > 0) {
+		if (obj.getPedidos().equals(Status.ENCERRADO)) {
+			repository.deleteById(id);	
+		} else {
 			throw new DataIntegrityViolationException("Cliente possui pedido aberto e não pode ser deletado!");
 		}
-		if (obj.getPedidos().equals(Status.ENCERRADO)) {
-		repository.deleteById(id);
-	}
 	}
 		
 	private void validaPorCpfEEmail(ClienteDTO objDTO) {
