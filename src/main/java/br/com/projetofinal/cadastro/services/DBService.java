@@ -49,6 +49,7 @@ public class DBService {
 		Pedido p5 = new Pedido(null, Status.ENCERRADO, "Pedido 5", "Trocar vidros", func3, cli5);
 		
 		pessoaRepository.saveAll(Arrays.asList(func1, func2, func3, cli1, cli2, cli3, cli4, cli5));
+		pedidoRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
 		
 	
 	}
