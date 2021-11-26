@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import br.com.projetofinal.cadastro.domain.Cliente;
 import br.com.projetofinal.cadastro.domain.Pessoa;
 import br.com.projetofinal.cadastro.domain.dto.ClienteDTO;
+import br.com.projetofinal.cadastro.domain.enums.Perfil;
 import br.com.projetofinal.cadastro.domain.enums.Status;
 import br.com.projetofinal.cadastro.repositorios.ClienteRepository;
 import br.com.projetofinal.cadastro.repositorios.PessoaRepository;
@@ -61,7 +62,10 @@ public class ClienteService {
 		Cliente obj = findById(id);
 
 		if (obj.getPedidos().size() > 0) {
-			throw new DataIntegrityViolationException("Funcionario possui um pedido aberto e não pode ser deletado!");
+			throw new DataIntegrityViolationException("Cliente possui um pedido aberto e não pode ser deletado!");
+		}
+		if (obj.getPerfis().equals(Perfil.CLIENTE)) {
+			throw new DataIntegrityViolationException("Perfil não habilitado!");
 		}
 		if (obj.getPedidos().equals(Status.ENCERRADO)) {
 			repository.deleteById(id);
