@@ -65,7 +65,9 @@ public class FuncionarioService {
 			throw new DataIntegrityViolationException("Funcionario possui um pedido aberto e não pode ser deletado!");
 		} if (obj.getPedidos().equals(Status.ENCERRADO)) {		
 		repository.deleteById(id);
-			}
+		} else {
+			repository.deleteById(id);
+		}
 	}
 	
 	private void validaPorCpfEEmail(FuncionarioDTO objDTO) {
