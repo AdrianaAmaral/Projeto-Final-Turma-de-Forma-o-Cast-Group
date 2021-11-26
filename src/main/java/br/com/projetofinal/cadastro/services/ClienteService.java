@@ -65,8 +65,6 @@ public class ClienteService {
 		}
 		if (obj.getPedidos().equals(Status.ENCERRADO)) {
 			repository.deleteById(id);
-		} else {
-			repository.deleteById(id);
 		}
 	}
 
