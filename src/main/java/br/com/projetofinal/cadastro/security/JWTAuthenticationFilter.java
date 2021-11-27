@@ -54,23 +54,23 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 			response.setHeader("Authorization", "Bearer " + token);
 		}
 		
-//		@Override
-//		protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response,
-//				AuthenticationException failed) throws IOException, ServletException {
-//			
-//			response.setStatus(401);
-//			response.setContentType("application/json");
-//			response.getWriter().append(json());
-//		}
+		@Override
+		protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response,
+				AuthenticationException failed) throws IOException, ServletException {
+			
+			response.setStatus(401);
+			response.setContentType("application/json");
+			response.getWriter().append(json());
+		}
 
-//		private CharSequence json() {
-//			long date = new Date().getTime();
-//			return "{"
-//					+ "\"timestamp\": " + date + ", " 
-//					+ "\"status\": 401, "
-//					+ "\"error\": \"Não autorizado\", "
-//					+ "\"message\": \"Email ou senha inválidos\", "
-//					+ "\"path\": \"/login\"}";
-//		}
+		private CharSequence json() {
+			long date = new Date().getTime();
+			return "{"
+					+ "\"timestamp\": " + date + ", " 
+					+ "\"status\": 401, "
+					+ "\"error\": \"Não autorizado\", "
+					+ "\"message\": \"Email ou senha inválidos\", "
+					+ "\"path\": \"/login\"}";
+		}
 		
 	}
