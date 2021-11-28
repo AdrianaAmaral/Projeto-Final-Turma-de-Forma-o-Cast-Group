@@ -40,7 +40,7 @@ public class ClienteService {
 
 	public Cliente create(ClienteDTO objDTO) {
 		objDTO.setId(null);
-		objDTO.setSenha(encoder.encode(objDTO.getSenha()));
+		objDTO.setSenha(encoder.encode(objDTO.getSenha())); //quando salvar a senha no BD, ela vai encodada
 		validaPorCpfEEmail(objDTO);
 		Cliente newObj = new Cliente(objDTO);
 		return repository.save(newObj);

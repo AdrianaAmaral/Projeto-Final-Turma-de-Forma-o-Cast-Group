@@ -40,23 +40,23 @@ public class PedidoService {
 		return repository.save(newPedido(obj));
 	}
 
-	public Pedido update(Integer id, @Valid PedidoDTO objDTO) {
+	public Pedido update(Integer id, @Valid PedidoDTO objDTO) { //objDto com as informações atualizadas
 		objDTO.setId(id);
-		Pedido oldObj = findById(id);
+		Pedido oldObj = findById(id); //oldObj com as informações desatualizadas
 		oldObj = newPedido(objDTO);
 		return repository.save(oldObj);
 	}
 
-	private Pedido newPedido(PedidoDTO obj) {
+	private Pedido newPedido(PedidoDTO obj) { //esse novo pedido atualiza e cria
 		Funcionario funcionario = funcionarioService.findById(obj.getFuncionario());
 		Cliente cliente = clienteService.findById(obj.getCliente());
 		
 		Pedido Pedido = new Pedido();
-		if(obj.getId() != null) {
+		if(obj.getId() != null) { //se for diferente de nulo quer dizer que quer atualizar
 			Pedido.setId(obj.getId());
 		}
 		
-		if(obj.getStatus().equals(2)) {
+		if(obj.getStatus().equals(2)) { //se o status for encerrado(2) então pega a data atual para data de fechamento
 			Pedido.setDataFechamento(LocalDate.now());
 		}
 		

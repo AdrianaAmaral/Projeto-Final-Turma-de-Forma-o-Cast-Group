@@ -16,7 +16,7 @@ import br.com.projetofinal.cadastro.services.excecao.DataIntegrityViolationExcep
 public class ResourceException {
 
 	@ExceptionHandler(ObjectnotFoundException.class)
-	public ResponseEntity<StandardError> ObjetoExcecao(ObjectnotFoundException ex,
+	public ResponseEntity<StandardError> ObjetoExcecao(ObjectnotFoundException ex, //tratar do erro do id não encontrado
 			HttpServletRequest request) {
 
 		StandardError error = new StandardError(System.currentTimeMillis(), HttpStatus.NOT_FOUND.value(),
@@ -26,7 +26,7 @@ public class ResourceException {
 	}
 	
 	@ExceptionHandler(DataIntegrityViolationException.class)
-	public ResponseEntity<StandardError> dataIntegrityViolationException(DataIntegrityViolationException ex,
+	public ResponseEntity<StandardError> dataIntegrityViolationException(DataIntegrityViolationException ex, //tratar do erro do cpf já cadastrado
 			HttpServletRequest request) {
 
 		StandardError error = new StandardError(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(),
@@ -35,7 +35,7 @@ public class ResourceException {
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
 	}
 	
-	@ExceptionHandler(MethodArgumentNotValidException.class)
+	@ExceptionHandler(MethodArgumentNotValidException.class) //esse methodArgument se recerbermos essa mensagem no postman ela vai ser tratada nesse método
 	public ResponseEntity<StandardError> validationErrors(MethodArgumentNotValidException ex,
 			HttpServletRequest request) {
 

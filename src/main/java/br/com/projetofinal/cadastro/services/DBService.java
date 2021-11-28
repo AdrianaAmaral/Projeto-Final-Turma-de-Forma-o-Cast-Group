@@ -30,7 +30,7 @@ public class DBService {
 
 	public void instanciaDB() {
 		
-		Funcionario func1 = new Funcionario(null, "Adriana Amaral", "33625585855", "adrianafsamaral@gmail.com", encoder.encode("123"));
+		Funcionario func1 = new Funcionario(null, "Adriana Amaral", "33625585855", "adrianafsamaral@gmail.com", encoder.encode("123")); //a senha salva encodada no BD
 		Funcionario func2 = new Funcionario(null, "Larissa Rodrigues", "44763823043", "larissarodrigues@gmail.com", encoder.encode("123"));
 		Funcionario func3 = new Funcionario(null, "Luciana Santos", "45269187094", "lucianasantos@gmail.com", encoder.encode("123"));
 		func1.addPerfil(Perfil.ADMIN);
